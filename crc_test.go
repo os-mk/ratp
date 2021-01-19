@@ -1,0 +1,27 @@
+package ratp
+
+import "testing"
+
+func TestCalcCRC16(t *testing.T) {
+	if calcCRC16([]byte{}) != 0 {
+		t.Error()
+	}
+	if calcCRC16([]byte{0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39}) != 0x31C3 {
+		t.Error()
+	}
+}
+
+func TestCkeckCRC16(t *testing.T) {
+	if !checkCRC16([]byte{}, 0) {
+		t.Error()
+	}
+	if checkCRC16([]byte{}, 42) {
+		t.Error()
+	}
+	if !checkCRC16([]byte{0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39}, 0x31C3) {
+		t.Error()
+	}
+	if checkCRC16([]byte{0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39}, 0) {
+		t.Error()
+	}
+}
