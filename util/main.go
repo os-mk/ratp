@@ -23,7 +23,7 @@ func main() {
 	}
 
 	if len(*port) == 0 {
-		fmt.Fprintln(os.Stderr, "Port must be choosen")
+		fmt.Fprintln(os.Stderr, "Port must be chosen")
 		os.Exit(2)
 	}
 
